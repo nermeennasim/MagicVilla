@@ -16,7 +16,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
-            return Ok(VillaStore.villaList.ToList());
+            return Ok(VillaStore.VillaList);
         }
         //if we want to get Villa just one based on ID
         [HttpGet("{Id:int}",Name ="GetVilla")]
@@ -31,7 +31,7 @@ namespace MagicVilla_VillaAPI.Controllers
             if (Id == 0){
                 return BadRequest();
             }
-            var villa = VillaStore.villaList.FirstOrDefault(x => x.Id == Id);
+            var villa = VillaStore.VillaList.FirstOrDefault(x => x.Id == Id);
             if (villa == null)
             {
                 return NotFound();
@@ -54,8 +54,9 @@ namespace MagicVilla_VillaAPI.Controllers
 
             }
             //we can get ids already stored in Villa Store and increment the last id
-            villaDto.Id = VillaStore.villaList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
-            VillaStore.villaList.ToList().Add(villaDto);
+            villaDto.Id = VillaStore.VillaList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
+            VillaStore.VillaList.Add(villaDto) ;
+            Console.WriteLine(VillaStore.VillaList.Last());
             //instead of Ok result we can set a name of route where it was created
             return CreatedAtRoute("GetVilla", new {Id= villaDto.Id}, villaDto);
                
