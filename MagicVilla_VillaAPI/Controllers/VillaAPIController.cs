@@ -16,10 +16,11 @@ namespace MagicVilla_VillaAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
-            return Ok(VillaStore.villaList);
+            return Ok(VillaStore.villaList.ToList());
         }
         //if we want to get Villa just one based on ID
-        [HttpGet("{Id:int}")]
+        [HttpGet("{Id:int}",Name ="GetVilla")]
+
         // [ProducesResponseType(200,Type=typeof(VillaDTO))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -37,6 +38,27 @@ namespace MagicVilla_VillaAPI.Controllers
             }
             return Ok(villa);
         }
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<VillaDTO> CreateVilla([FromBody] VillaDTO villaDto)
+        {
+            if (villaDto == null)
+            {
+                return BadRequest();
+            }
+            if (villaDto.Id > 0)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
 
+            }
+            //we can get ids already stored in Villa Store and increment the last id
+            villaDto.Id = VillaStore.villaList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
+            VillaStore.villaList.ToList().Add(villaDto);
+            //instead of Ok result we can set a name of route where it was created
+            return CreatedAtRoute("GetVilla", new {Id= villaDto.Id}, villaDto);
+               
+        }
     }
 }
