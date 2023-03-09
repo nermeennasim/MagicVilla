@@ -1,6 +1,7 @@
 ﻿using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.DTOs;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MagicVilla_VillaAPI.Controllers
@@ -69,7 +70,6 @@ namespace MagicVilla_VillaAPI.Controllers
             //we can get ids already stored in Villa Store and increment the last id
             villaDto.Id = VillaStore.VillaList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
             VillaStore.VillaList.Add(villaDto) ;
-            Console.WriteLine(VillaStore.VillaList.Last());
             //instead of Ok result we can set a name of route where it was created
             return CreatedAtRoute("GetVilla", new {Id= villaDto.Id}, villaDto);
                
@@ -117,6 +117,29 @@ namespace MagicVilla_VillaAPI.Controllers
 
             return NoContent();
         }
-         
+        [HttpPatch("{id:int}", Name = "UpdatePartialVilla")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdatePartialVilla(int id, JsonPatchDocument<VillaDTO> patchDTO)
+        {
+            if (patchDTO == null || id == 0)
+            {
+                return BadRequest();
+            }
+                    
+            var villa = VillaStore.VillaList.FirstOrDefault(u => u.Id == id);
+            if(villa == null)
+            {
+                return BadRequest();
+            }
+
+            patchDTO.ApplyTo(villa, ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+          
+            return NoContent();
+        }
     }
 }
