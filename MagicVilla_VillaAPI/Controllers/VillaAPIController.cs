@@ -9,15 +9,23 @@ namespace MagicVilla_VillaAPI.Controllers
     //[Route("api/[controller]"] we dont want to name after controller, if controller name change, then 
     //all the api calls or clients will get an error. so you wil have to notify them
     //instead just hard code it
-    //instead just hard code it
+    
     [Route("api/VillaAPI")]
     //[ApiController]
     public class VillaAPIController : ControllerBase
     {
+        private readonly ILogger<VillaAPIController> _logger;
+
+        //implement Loggers as Dependency Injection 
+        public VillaAPIController(ILogger<VillaAPIController> logger)
+        {
+            _logger =logger;
+        }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
+            _logger.LogInformation("Getting all Villas");
             return Ok(VillaStore.VillaList);
         }
         //if we want to get Villa just one based on ID
@@ -31,6 +39,7 @@ namespace MagicVilla_VillaAPI.Controllers
         public ActionResult<VillaDTO> GetVilla(int id)
         {
             if (id == 0){
+                _logger.LogError("Get villa Error with Id " + id);
                 return BadRequest();
             }
             var villa = VillaStore.VillaList.FirstOrDefault(x => x.Id == id);
