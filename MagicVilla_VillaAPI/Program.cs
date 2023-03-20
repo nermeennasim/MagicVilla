@@ -1,5 +1,7 @@
 
 
+using MagicVilla_VillaAPI.Logging;
+
 var builder = WebApplication.CreateBuilder(args);
 /*//Add 3rd party Logger, with file name and logging interval
 Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().
@@ -17,9 +19,8 @@ builder.Services.AddControllers(
     .AddNewtonsoftJson()
     .AddXmlDataContractSerializerFormatters();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddSingleton<ILogging, Logging>();
 
 var app = builder.Build();
 
