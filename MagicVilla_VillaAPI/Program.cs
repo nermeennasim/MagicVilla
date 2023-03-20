@@ -1,12 +1,12 @@
-using Serilog;
+
 
 var builder = WebApplication.CreateBuilder(args);
-//Add 3rd party Logger, with file name and logging interval
+/*//Add 3rd party Logger, with file name and logging interval
 Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().
     WriteTo.File("log/villaLogs.txt",rollingInterval:RollingInterval.Day).CreateLogger();
 
 builder.Host.UseSerilog();
-
+*/
 
 // Add services to the container.
 
