@@ -4,7 +4,6 @@ using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.DTOs;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
