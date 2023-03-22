@@ -1,6 +1,8 @@
 
 
+using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.Logging;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 /*//Add 3rd party Logger, with file name and logging interval
@@ -9,11 +11,13 @@ Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().
 
 builder.Host.UseSerilog();
 */
-
+//Add db string
+builder.Services.AddDbContext<ApplicationDBContext>
+    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnect")));
 // Add services to the container.
 
 builder.Services.AddControllers(
-    options => { }
+    options => { } 
     //{options.ReturnHttpNotAcceptable = true; }
                 )
     .AddNewtonsoftJson()
