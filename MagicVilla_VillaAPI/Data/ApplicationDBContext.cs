@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_VillaAPI.Data
 {
-    public class ApplicationDBContext:DbContext
+    public class ApplicationDBContext : DbContext
     {
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options): base(options)
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
-                
+
         }
         public DbSet<Villa> Villas { get; set; }
 
@@ -16,21 +16,22 @@ namespace MagicVilla_VillaAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Villa>().HasData(
-                new Villa() {
-                    Id=1,
-                    Name="Royal Villa",
-                    Details= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ImageUrl= "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
-                    Rate=220,
-                    Occupancy=5,
-                    Sqft=550,
-                    Amenity="",
-                    CreatedDate= DateTime.Now
-                 
+                new Villa()
+                {
+                   Id = 1,
+                    Name = "Royal Villa",
+                    Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
+                    Rate = 220,
+                    Occupancy = 5,
+                    Sqft = 550,
+                    Amenity = "",
+                    CreatedDate = DateTime.Now
+
                 },
                  new Villa()
                  {
-                     Id = 2,
+                    Id=2,
                      Name = "Ghoyal Villa",
                      Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                      ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
@@ -43,7 +44,7 @@ namespace MagicVilla_VillaAPI.Data
                  },
                   new Villa()
                   {
-                      Id = 3,
+                      Id=3,
                       Name = "Shriya Ghoshal Villa",
                       Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                       ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
@@ -56,7 +57,7 @@ namespace MagicVilla_VillaAPI.Data
                   },
                    new Villa()
                    {
-                       Id = 5,
+                        Id=4,
                        Name = "Social Villa",
                        Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                        ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
@@ -69,7 +70,7 @@ namespace MagicVilla_VillaAPI.Data
                    },
                     new Villa()
                     {
-                        Id = 6,
+                       Id=5,
                         Name = "Ghost Villa",
                         Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                         ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
@@ -81,7 +82,7 @@ namespace MagicVilla_VillaAPI.Data
                     },
                      new Villa()
                      {
-                         Id = 8,
+                        Id=6,
                          Name = "KOyal Ka Ghosla Villa",
                          Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                          ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
@@ -94,7 +95,7 @@ namespace MagicVilla_VillaAPI.Data
                      }
 
                 );
+        }
 
         }
-    }
 }
