@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230322050836_AddVillaTable-SeedData")]
-    partial class AddVillaTableSeedData
+    [Migration("20230324162824_AddVillaTable-SeedDataWithDate")]
+    partial class AddVillaTableSeedDataWithDate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,7 +72,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 1,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 21, 22, 8, 36, 112, DateTimeKind.Local).AddTicks(8238),
+                            CreatedDate = new DateTime(2023, 3, 24, 9, 28, 24, 770, DateTimeKind.Local).AddTicks(6308),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
                             Name = "Royal Villa",
@@ -84,7 +84,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 21, 22, 8, 36, 112, DateTimeKind.Local).AddTicks(8280),
+                            CreatedDate = new DateTime(2023, 3, 24, 9, 28, 24, 770, DateTimeKind.Local).AddTicks(6339),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
                             Name = "Ghoyal Villa",
@@ -96,7 +96,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 21, 22, 8, 36, 112, DateTimeKind.Local).AddTicks(8282),
+                            CreatedDate = new DateTime(2023, 3, 24, 9, 28, 24, 770, DateTimeKind.Local).AddTicks(6341),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
                             Name = "Shriya Ghoshal Villa",
@@ -106,9 +106,9 @@ namespace MagicVilla_VillaAPI.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 4,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 21, 22, 8, 36, 112, DateTimeKind.Local).AddTicks(8284),
+                            CreatedDate = new DateTime(2023, 3, 24, 9, 28, 24, 770, DateTimeKind.Local).AddTicks(6343),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
                             Name = "Social Villa",
@@ -118,9 +118,9 @@ namespace MagicVilla_VillaAPI.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 5,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 21, 22, 8, 36, 112, DateTimeKind.Local).AddTicks(8289),
+                            CreatedDate = new DateTime(2023, 3, 24, 9, 28, 24, 770, DateTimeKind.Local).AddTicks(6346),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
                             Name = "Ghost Villa",
@@ -130,9 +130,9 @@ namespace MagicVilla_VillaAPI.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 6,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 21, 22, 8, 36, 112, DateTimeKind.Local).AddTicks(8291),
+                            CreatedDate = new DateTime(2023, 3, 24, 9, 28, 24, 770, DateTimeKind.Local).AddTicks(6347),
                             Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             ImageUrl = "C:\\Users\\nerme\\full-stack-learning-projects\\DotNetMastery_RESTAPIS\\ASP.NET MVC\\MagicVilla\\MagicVilla_VillaAPI\\Images\\01.jpg",
                             Name = "KOyal Ka Ghosla Villa",
