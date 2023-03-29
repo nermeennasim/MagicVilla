@@ -12,8 +12,9 @@ Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().
 builder.Host.UseSerilog();
 */
 //Add db string
+
 builder.Services.AddDbContext<ApplicationDBContext>
-    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnect")));
+    (options => options.UseSqlServer(builder.Configuration.GetConnectionString( "DefaultConnection"), options=>options.EnableRetryOnFailure()));
 // Add services to the container.
 
 builder.Services.AddControllers(

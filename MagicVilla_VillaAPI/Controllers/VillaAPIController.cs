@@ -23,6 +23,7 @@ namespace MagicVilla_VillaAPI.Controllers
         public VillaAPIController(ApplicationDBContext dBContext)
         {
             _dbContext = dBContext;
+          
         }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -74,32 +75,30 @@ namespace MagicVilla_VillaAPI.Controllers
             {
                 return BadRequest();
             }
-            if (villaDto.Id > 0)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-
-            }
-
-            Villa model = new()
-            {
-                Id = villaDto.Id,
-                Name = villaDto.Name,
-                Amenity = villaDto.Amenity,
-                ImageUrl = villaDto.ImageUrl,
-                Rate = villaDto.Rate,
-                Sqft = villaDto.sqft,
-                Occupancy = villaDto.Occupancy,
-                Details= villaDto.Details,
-                CreatedDate= DateTime.Now,
-
-
-            };
-            //we can get ids already stored in Villa Store and increment the last id
-          //  villaDto.Id = _dbContext.Villas.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
+         //   var existing = _dbContext.Villas.SingleOrDefault(c => c.Id == villaDto.Id );
            
-            _dbContext.Villas.Add(model);
-         
-            _dbContext.SaveChanges();
+                Villa model = new()
+                {
+                    Id = villaDto.Id,
+                    Name = villaDto.Name,
+                    Amenity = villaDto.Amenity,
+                    ImageUrl = villaDto.ImageUrl,
+                    Rate = villaDto.Rate,
+                    Sqft = villaDto.sqft,
+                    Occupancy = villaDto.Occupancy,
+                    Details = villaDto.Details,
+                    CreatedDate = DateTime.Now,
+
+
+                };
+                //we can get ids already stored in Villa Store and increment the last id
+                //  villaDto.Id = _dbContext.Villas.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
+
+                _dbContext.Villas.Add(model);
+
+                _dbContext.SaveChanges();
+
+                      
             //instead of Ok result we can set a name of route where it was created
             return CreatedAtRoute("GetVilla", new {Id= villaDto.Id}, villaDto);
                
@@ -142,7 +141,7 @@ namespace MagicVilla_VillaAPI.Controllers
             }
 
             var villa = VillaStore.VillaList.FirstOrDefault(u => u.Id == id);
-            Villa model = new Villa()
+            Villa model = new ()
             {
                 Id = villaDto.Id,
                 Name = villaDto.Name,
