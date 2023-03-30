@@ -100,7 +100,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
                       
             //instead of Ok result we can set a name of route where it was created
-            return CreatedAtRoute("GetVilla", new {Id= villaDto.Id}, villaDto);
+            return CreatedAtRoute("GetVilla", new {Id= model.Id}, model);
                
         }
         [HttpDelete("{id:int}",Name ="DeleteVilla")]
