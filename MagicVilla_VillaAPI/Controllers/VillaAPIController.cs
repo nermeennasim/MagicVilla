@@ -59,7 +59,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<VillaDTO> CreateVilla([FromBody] VillaDTO villaDto)
+        public ActionResult<VillaDTO> CreateVilla([FromBody] VillaCreateDTO villaDto)
         {
             if (!ModelState.IsValid)
             {
@@ -85,11 +85,10 @@ namespace MagicVilla_VillaAPI.Controllers
                     Amenity = villaDto.Amenity,
                     ImageUrl = villaDto.ImageUrl,
                     Rate = villaDto.Rate,
-                    Sqft = villaDto.sqft,
+                    Sqft = villaDto.Sqft,
                     Occupancy = villaDto.Occupancy,
                     Details = villaDto.Details,
                     CreatedDate = DateTime.Now,
-
 
                 };
                 //we can get ids already stored in Villa Store and increment the last id
@@ -129,7 +128,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult UpdateVilla(int id,[FromBody] VillaDTO villaDto)
+        public IActionResult UpdateVilla(int id,[FromBody] VillaUpdateDTO villaDto)
         {
             if(villaDto == null || id != villaDto.Id)
             {
@@ -149,7 +148,7 @@ namespace MagicVilla_VillaAPI.Controllers
                 Amenity = villaDto.Amenity,
                 Rate = villaDto.Rate,
                 ImageUrl = villaDto.ImageUrl,
-                Sqft = villaDto.sqft,
+                Sqft = villaDto.Sqft,
                 Occupancy = villaDto.Occupancy,
                 Details = villaDto.Details,
                 CreatedDate = DateTime.Now,
@@ -166,7 +165,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
 
 
-        public IActionResult UpdatePartialVilla(int id, [FromBody] JsonPatchDocument<VillaDTO> patchDTO)
+        public IActionResult UpdatePartialVilla(int id, [FromBody] JsonPatchDocument<VillaUpdateDTO> patchDTO)
         {
             if (patchDTO == null || id == 0)
             {
@@ -179,14 +178,14 @@ namespace MagicVilla_VillaAPI.Controllers
                 return BadRequest();
             }
 
-            VillaDTO villaDto = new ()
+            VillaUpdateDTO villaDto = new ()
             {
                 Id = villa.Id,
                 Name = villa.Name,
                 Amenity = villa.Amenity,
                 ImageUrl = villa.ImageUrl,
                 Rate = villa.Rate,
-                sqft = villa.Sqft,
+                Sqft = villa.Sqft,
                 Occupancy = villa.Occupancy,
                 Details = villa.Details,
 
@@ -201,7 +200,7 @@ namespace MagicVilla_VillaAPI.Controllers
                 Amenity = villaDto.Amenity,
                 Rate = villaDto.Rate,
                 ImageUrl = villaDto.ImageUrl,
-                Sqft = villaDto.sqft,
+                Sqft = villaDto.Sqft,
                 Occupancy = villaDto.Occupancy,
                 Details = villaDto.Details,
 
