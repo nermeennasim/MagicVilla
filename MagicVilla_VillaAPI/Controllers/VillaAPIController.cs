@@ -140,17 +140,18 @@ namespace MagicVilla_VillaAPI.Controllers
             }
 
             var villa = await _dbContext.Villas.FirstOrDefaultAsync(u => u.Id == id);
+
             Villa model = new ()
             {
-                Id = villaDto.Id,
+                
                 Name = villaDto.Name,
                 Amenity = villaDto.Amenity,
                 Rate = villaDto.Rate,
-                ImageUrl = villaDto.ImageUrl,
+                ImageUrl =villaDto.ImageUrl,
                 Sqft = villaDto.Sqft,
                 Occupancy = villaDto.Occupancy,
                 Details = villaDto.Details,
-                CreatedDate = DateTime.Now,
+               
 
             };
              _dbContext.Villas.Update(model);
