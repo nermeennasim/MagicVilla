@@ -1,5 +1,6 @@
 
 
+using MagicVilla_VillaAPI;
 using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.Logging;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,9 @@ builder.Host.UseSerilog();
 builder.Services.AddDbContext<ApplicationDBContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString( "DefaultConnection"), options=>options.EnableRetryOnFailure()));
 // Add services to the container.
+
+//Add Automapper
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 builder.Services.AddControllers(
     options => { } 
